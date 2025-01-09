@@ -6,8 +6,16 @@ void main() {
   ));
 }
 
-class FerzaCard extends StatelessWidget {
+class FerzaCard extends StatefulWidget {
   const FerzaCard({super.key});
+
+  @override
+  State<FerzaCard> createState() => _FerzaCardState();
+}
+
+class _FerzaCardState extends State<FerzaCard> {
+
+  int ninjaLevel = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +29,18 @@ class FerzaCard extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.grey[850],
         elevation: 0.0,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){
+          setState(() {
+            ninjaLevel += 1;
+          });
+        },
+        child: Icon(
+          Icons.add,
+          color: Colors.white,
+        ),
+        backgroundColor: Colors.grey[800],
       ),
       body: Padding(
         padding: EdgeInsets.fromLTRB(30.0, 40.0, 30.0, 0),
@@ -64,7 +84,7 @@ class FerzaCard extends StatelessWidget {
             ),
             SizedBox(height: 10.0),
             Text(
-              '8',
+              '$ninjaLevel',
               style: TextStyle(
                   color: Colors.amberAccent[200],
                   letterSpacing: 2.0,
